@@ -18,7 +18,7 @@ const SearchPost = ({
           alt="avatar"
         />
       </div>
-      <a href={url} target="_blank" rel="noreferrer">
+      <a href={url} target="_blank">
         <div>
           <div className="box-title">{title}</div>
           {description !== undefined ? (
@@ -47,11 +47,12 @@ const Box = styled.div`
   box-shadow: 0 3px 4px 1px rgb(32 33 36 / 20%);
   width: calc(100% - 30px);
   border-radius: 5px;
-  padding: 15px;
+  padding: 10px;
   margin-top: 25px;
   background: #fff;
   cursor: pointer;
   transition: 0.2s;
+  box-sizing: border-box;
   :hover {
     cursor: pointer;
     transform: translateY(-3px);
@@ -59,6 +60,10 @@ const Box = styled.div`
   img {
     width: 50px;
     border-radius: 100px;
+  }
+  a{
+    width: 100%;
+    height: 100%;
   }
   div {
     margin: 0 12px;
@@ -75,14 +80,18 @@ const Box = styled.div`
     cursor: pointer;
   }
   .box-title {
+    height: 30px;
     font-weight: 900;
     font-size: 20px;
     color: #FF8080;
   }
   .box-sub {
+    height: 15px;
+    margin-bottom: 5px;
     font-size: small;
     color: #757575;
     opacity: 0.6;
+    box-sizing: border-box;
   }
   .box-button {
     margin-left: auto;

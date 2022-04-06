@@ -18,14 +18,12 @@ const RepositoryPost = ({
           alt="avatar"
         />
       </div>
-      <a href={url} target="_blank" rel="noreferrer">
-        <div className="box-content">
-          <div className="box-title">{title}</div>
-          {description !== undefined ? (
-            <div className="box-sub">{description}</div>
-          ) : null}
-        </div>
-      </a>
+      <div className="box-content">
+        <div className="box-title">{title}</div>
+        {description !== undefined ? (
+          <div className="box-sub">{description}</div>
+        ) : null}
+      </div>
       <div className="box-button">
         <button onClick={onClick}>{button}</button>
       </div>
@@ -52,6 +50,7 @@ const Box = styled.div`
   img {
     width: 70px;
     border-radius: 100px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   }
   button {
     border: 0px;

@@ -2,18 +2,18 @@ import React, { useState } from 'react';
 import styled from "styled-components";
 import axios from "axios";
 
-const SearchBar = ({ setData }) => {
+const SearchBar = ({ setData, setIsLoaded }) => {
   const [input, setInput] = useState("");
 
   const getSearchData = async () => {
-    // setIsLoaded(false);
+    setIsLoaded(false);
 
     const url = `https://api.github.com/search/repositories?q=${input}&per_page=100`;
     await axios.get(url).then((data) => {
       setData(data.data.items);
     });
 
-    // setIsLoaded(true);
+    setIsLoaded(true);
   };
 
   const searchData = () => {

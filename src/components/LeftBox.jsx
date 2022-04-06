@@ -44,6 +44,7 @@ const LeftBox = () => {
 
 const Section = styled.section`
   width: 70%;
+  height: calc(100vh - 100px);;
 `
 const TabContainer = styled.ul`
   display: flex;
