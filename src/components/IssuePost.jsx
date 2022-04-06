@@ -38,11 +38,12 @@ const Box = styled.div`
   height: 180px;
   border-radius: 5px;
   padding: 40px 30px;
-  margin-top: 25px;
+  margin-top: 20px;
   background: #fff;
   cursor: pointer;
   transition: 0.2s;
   box-sizing: border-box;
+  margin-left: 20px;
   :hover {
     cursor: pointer;
     transform: translateY(-3px);
