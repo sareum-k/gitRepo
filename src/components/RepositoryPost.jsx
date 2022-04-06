@@ -37,6 +37,7 @@ const Box = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
+  height: 22.2%;
   padding: 15px;
   box-sizing: border-box;
   background: #fff;
@@ -68,8 +69,9 @@ const Box = styled.div`
   }
   .box-title {
     width: 250px;
+    height: 40px;
     font-weight: 900;
-    font-size: 20px;
+    font-size: 22px;
     color: #FF8080;
     white-space: nowrap;
     overflow: hidden;
