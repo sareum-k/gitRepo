@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from "styled-components";
 import SearchBar from './SearchBar';
 import SearchPost from './SearchPost';
 
 const Search = () => {
+  const [searchData, setSearchData] = useState([]); // 검색 데이터 저장
+  console.log(searchData)
+
   return (
     <Container>
-      <SearchBar />
-      <SearchPost />
+      <SearchBar setData={setSearchData} />
+      {searchData.map((item, idx) => (
+        <SearchPost
+          key={idx}
+          url={item.html_url}
+          title={item.name}
+          description={item.description}
+          avatar={item.owner.avatar_url}
+          updated={item.updated_at}
+          button="등록"
+        />
+      ))}
     </Container>
   );
 }

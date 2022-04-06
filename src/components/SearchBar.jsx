@@ -1,11 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from "styled-components";
+import axios from "axios";
 
-const SearchBar = () => {
+const SearchBar = ({ setData }) => {
+  const [input, setInput] = useState("");
+
+  const getSearchData = async () => {
+    // setIsLoaded(false);
+
+    const url = `https://api.github.com/search/repositories?q=${input}&per_page=100`;
+    await axios.get(url).then((data) => {
+      setData(data.data.items);
+    });
+
+    // setIsLoaded(true);
+  };
+
+  const searchData = () => {
+    if (input === "") {
+      alert("Repository 제목을 입력해주세요.");
+      return;
+    }
+    getSearchData();
+  };
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  }
+
   return (
     <Container>
-      <SearchInput type="text" placeholder="Repository명을 입력해주세요 :)" />
-      <SearchBtn>검색</SearchBtn>
+      <SearchInput
+        type="text"
+        placeholder="Repository명을 입력해주세요 :)"
+        onChange={handleChange}
+        onKeyPress={(e) => e.key === "Enter" && searchData()}
+        value={input}
+      />
+      <SearchBtn onClick={searchData}>검색</SearchBtn>
     </Container>
   );
 }
