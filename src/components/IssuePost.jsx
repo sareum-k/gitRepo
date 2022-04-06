@@ -10,13 +10,13 @@ const IssuePost = ({
 }) => {
   return (
     <Box>
-      <div className="box-avatar">
-        <img
-          src={avatar}
-          alt="avatar"
-        />
-      </div>
       <a href={url} target="_blank" rel="noreferrer">
+        <div className="box-avatar">
+          <img
+            src={avatar}
+            alt="avatar"
+          />
+        </div>
         <div className="box-content">
           <div className="box-title">{title}</div>
           {description !== undefined ? (
@@ -38,7 +38,7 @@ const Box = styled.div`
   height: 180px;
   border-radius: 5px;
   padding: 40px 30px;
-  margin-top: 20px;
+  margin-top: 30px;
   background: #fff;
   cursor: pointer;
   transition: 0.2s;
@@ -47,6 +47,9 @@ const Box = styled.div`
   :hover {
     cursor: pointer;
     transform: translateY(-3px);
+  }
+  a{
+    display: flex;
   }
   img {
     width: 60px;

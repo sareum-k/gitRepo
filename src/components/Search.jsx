@@ -5,11 +5,13 @@ import SearchPost from './SearchPost';
 import { likedRepoState } from "../recoil/atoms";
 import { useRecoilState } from "recoil";
 import Pagination from './Pagination';
+import Loading from './Loading';
 
 const Search = () => {
   const storageData = JSON.parse(localStorage.getItem("likedData"));
   const [searchData, setSearchData] = useState([]); // 검색 데이터 저장
   const [likedData, setLikedData] = useRecoilState(likedRepoState);
+  const [isLoaded, setIsLoaded] = useState(null);
   const [limit, setLimit] = useState(5);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
@@ -43,35 +45,40 @@ const Search = () => {
 
   return (
     <Container>
-      <SearchBar setData={setSearchData} />
-      {searchData.slice(offset, offset + limit).map((item, idx) => (
-        <SearchPost
-          key={idx}
-          url={item.html_url}
-          title={item.name}
-          description={item.description}
-          avatar={item.owner.avatar_url}
-          updated={item.updated_at}
-          button="등록"
-          onClick={() =>
-            likeRepo({
-              name: item.name,
-              login: item.owner.login,
-              description: item.description,
-              updated: item.updated_at,
-              avatar: item.owner.avatar_url,
-            })
-          }
-        />
-      ))}
-      {searchData.length === 0 ? null : (
-        <Pagination
-          total={searchData.length}
-          limit={limit}
-          page={page}
-          setPage={setPage}
-        />
-      )}
+      <SearchBar setData={setSearchData} setIsLoaded={setIsLoaded} />
+      {isLoaded !== null &&
+        (isLoaded ? (
+          <>
+            {searchData.slice(offset, offset + limit).map((item, idx) => (
+              <SearchPost
+                key={idx}
+                url={item.html_url}
+                title={item.name}
+                description={item.description}
+                avatar={item.owner.avatar_url}
+                updated={item.updated_at}
+                button="등록"
+                onClick={() =>
+                  likeRepo({
+                    name: item.name,
+                    login: item.owner.login,
+                    description: item.description,
+                    updated: item.updated_at,
+                    avatar: item.owner.avatar_url,
+                  })
+                }
+              />
+            ))}
+            {searchData.length === 0 ? (<Empty>검색결과가 없습니다.</Empty>) : (
+              <Pagination
+                total={searchData.length}
+                limit={limit}
+                page={page}
+                setPage={setPage}
+              />
+            )}
+          </>
+        ) : (<Loading />))}
     </Container>
   );
 }
@@ -83,5 +90,15 @@ const Container = styled.div`
   padding: 30px 50px 0px 50px;
   box-sizing: border-box;
 `;
+
+const Empty = styled.p`
+  font-size: 22px;
+  font-weight: 600;
+  color: #FF8080;
+  display: flex;
+  justify-content: center;
+  height: calc(100vh - 250px);
+  align-items: center;
+`
 
 export default Search;

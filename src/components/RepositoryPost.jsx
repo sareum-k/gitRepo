@@ -18,14 +18,12 @@ const RepositoryPost = ({
           alt="avatar"
         />
       </div>
-      <a href={url} target="_blank" rel="noreferrer">
-        <div className="box-content">
-          <div className="box-title">{title}</div>
-          {description !== undefined ? (
-            <div className="box-sub">{description}</div>
-          ) : null}
-        </div>
-      </a>
+      <div className="box-content">
+        <div className="box-title">{title}</div>
+        {description !== undefined ? (
+          <div className="box-sub">{description}</div>
+        ) : null}
+      </div>
       <div className="box-button">
         <button onClick={onClick}>{button}</button>
       </div>

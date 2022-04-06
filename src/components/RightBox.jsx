@@ -16,21 +16,26 @@ const RightBox = () => {
   useEffect(() => {
     localStorage.setItem('likedData', JSON.stringify(likedData));
   }, [likedData]);
-
   return (
     <Section>
       <Header>Bookmark</Header>
-      {likedData.map((item, idx) => (
-        <RepositoryPost
-          key={idx}
-          button="삭제"
-          title={item.name}
-          description={item.description}
-          avatar={item.avatar}
-          updated={item.updated}
-          onClick={() => remove(item.name, item.login)}
-        />
-      ))}
+      {likedData.length === 0 ? (<Empty>Repository를 추가해주세요!</Empty>) : (
+        <>
+          {
+            likedData.map((item, idx) => (
+              <RepositoryPost
+                key={idx}
+                button="삭제"
+                title={item.name}
+                description={item.description}
+                avatar={item.avatar}
+                updated={item.updated}
+                onClick={() => remove(item.name, item.login)}
+              />
+            ))
+          }
+        </>
+      )}
     </Section>
   );
 }
@@ -45,6 +50,13 @@ const Header = styled.header`
   font-size: 36px;
   font-weight: 700;
   text-align: center;
+  color: #757575;
+`
+const Empty = styled.p`
+  height: calc(100vh - 150px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #757575;
 `
 

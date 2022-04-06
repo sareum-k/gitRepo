@@ -18,7 +18,7 @@ const SearchPost = ({
           alt="avatar"
         />
       </div>
-      <a href={url} target="_blank" rel="noreferrer">
+      <a href={url} target="_blank">
         <div>
           <div className="box-title">{title}</div>
           {description !== undefined ? (
@@ -60,6 +60,10 @@ const Box = styled.div`
   img {
     width: 50px;
     border-radius: 100px;
+  }
+  a{
+    width: 100%;
+    height: 100%;
   }
   div {
     margin: 0 12px;
