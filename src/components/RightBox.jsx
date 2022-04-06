@@ -29,7 +29,6 @@ const RightBox = () => {
                 title={item.name}
                 description={item.description}
                 avatar={item.avatar}
-                updated={item.updated}
                 onClick={() => remove(item.name, item.login)}
               />
             ))

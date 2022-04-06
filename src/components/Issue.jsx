@@ -68,7 +68,7 @@ const Container = styled.div`
 const Box = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 `
 const Empty = styled.p`
   font-size: 22px;
