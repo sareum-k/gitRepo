@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import styled from "styled-components";
 import axios from "axios";
+import { debounce } from "lodash";
+import { FaSearch } from "react-icons/fa";
 
 const SearchBar = ({ setData, setIsLoaded }) => {
   const [input, setInput] = useState("");
+  const [search, setSearch] = useState("");
+
+  const delaySetValue = useCallback(
+    debounce((value) => {
+      setSearch(value);
+    }, 500),
+    []);
 
   const getSearchData = async () => {
     setIsLoaded(false);
 
-    const url = `https://api.github.com/search/repositories?q=${input}&per_page=100`;
+    const url = `https://api.github.com/search/repositories?q=${search}&per_page=100`;
     await axios.get(url).then((data) => {
       setData(data.data.items);
     });
@@ -26,53 +35,70 @@ const SearchBar = ({ setData, setIsLoaded }) => {
 
   const handleChange = (e) => {
     setInput(e.target.value);
+    delaySetValue(e.target.value)
   }
+
+  useEffect(() => {
+    if (search !== '') {
+      getSearchData()
+    }
+  }, [search])
 
   return (
     <Container>
-      <SearchInput
-        type="text"
-        placeholder="Repository명을 입력해주세요 :)"
-        onChange={handleChange}
-        onKeyPress={(e) => e.key === "Enter" && searchData()}
-        value={input}
-      />
-      <SearchBtn onClick={searchData}>검색</SearchBtn>
+      <InputBox>
+        <FaSearch />
+        <SearchInput
+          type="text"
+          placeholder="Repository명을 입력해주세요 :)"
+          onChange={handleChange}
+          onKeyPress={(e) => e.key === "Enter" && searchData()}
+          value={input}
+        />
+      </InputBox>
     </Container>
   );
 }
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
   width: 100%;
   height: 40px;
+  justify-content: flex-end;
+  padding-right: 20px;
+  box-sizing: border-box;
 `
-const SearchInput = styled.input`
-  width: calc(100% - 70px);
-  height: 40px;
-  padding-left: 15px;
-  border-radius: 5px;
+const InputBox = styled.div`
+  width: calc(100% - 800px);
+  height: 100%;
+  border-radius: 10px;
+  background-color: #fff;
   border: none;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  outline: none;
-  box-sizing: border-box;
+  padding-left: 10px;
   margin-right: 10px;
+  box-sizing: border-box;
+
+  svg{
+    color: #757575;
+  }
+  display: flex;
+  align-items: center;
+  svg{
+    color: #757575;
+  }
+`
+const SearchInput = styled.input`
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  margin-left: 5px;
+  box-sizing: border-box;
   ::placeholder {
     color: #C8C6C6;
   }
 `
-const SearchBtn = styled.button`
-  width: 60px;
-  height: 100%;
-  font-size: 15px;
-  font-weight: 700;
-  border: 0px;
-  background-color: #FF8080;
-  border-radius: 5px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  color: #fff;
-  cursor: pointer;
-`
 
-export default SearchBar;
+export default React.memo(SearchBar);

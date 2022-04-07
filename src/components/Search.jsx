@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import styled from "styled-components";
 import SearchBar from './SearchBar';
 import SearchPost from './SearchPost';
@@ -7,9 +7,9 @@ import { useRecoilState } from "recoil";
 import Pagination from './Pagination';
 import Loading from './Loading';
 
-const Search = () => {
+const Search = ({ setUpdate }) => {
   const storageData = JSON.parse(localStorage.getItem("likedData"));
-  const [searchData, setSearchData] = useState([]); // 검색 데이터 저장
+  const [searchData, setSearchData] = useState([]);
   const [likedData, setLikedData] = useRecoilState(likedRepoState);
   const [isLoaded, setIsLoaded] = useState(null);
   const [limit, setLimit] = useState(5);

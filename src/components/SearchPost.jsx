@@ -8,7 +8,7 @@ const SearchPost = ({
   description,
   updated,
   onClick,
-  button
+  button,
 }) => {
   return (
     <Box>
@@ -99,4 +99,4 @@ const Box = styled.div`
   }
 `;
 
-export default SearchPost;
+export default React.memo(SearchPost);

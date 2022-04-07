@@ -5,7 +5,3 @@ export const likedRepoState = atom({
   default: [],
 });
 
-export const likedIssueState = atom({
-  key: "likedIssueState",
-  default: [],
-});
