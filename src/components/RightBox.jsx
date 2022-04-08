@@ -16,6 +16,7 @@ const RightBox = () => {
   useEffect(() => {
     localStorage.setItem('likedData', JSON.stringify(likedData));
   }, [likedData]);
+
   return (
     <Section>
       <Header>Bookmark</Header>
@@ -29,7 +30,6 @@ const RightBox = () => {
                 title={item.name}
                 description={item.description}
                 avatar={item.avatar}
-                updated={item.updated}
                 onClick={() => remove(item.name, item.login)}
               />
             ))
@@ -60,4 +60,4 @@ const Empty = styled.p`
   color: #757575;
 `
 
-export default RightBox;
+export default React.memo(RightBox);

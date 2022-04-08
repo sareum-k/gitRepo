@@ -2,11 +2,9 @@ import React from 'react';
 import styled from "styled-components";
 
 const RepositoryPost = ({
-  url,
   avatar = "https://avatars.githubusercontent.com/u/15073430?v=4",
   title = "Title",
   description,
-  updated,
   onClick,
   button
 }) => {
@@ -33,12 +31,13 @@ const RepositoryPost = ({
 
 const Box = styled.div`
   display: flex;
+  justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
   width: 100%;
   height: 22.2%;
   padding: 15px;
   box-sizing: border-box;
-  background: #fff;
   background-color: #EEEEEE;
   margin-bottom: 1px;
   :hover {
@@ -64,10 +63,9 @@ const Box = styled.div`
     cursor: pointer;
   }
   .box-content {
-    width: 90%;
+    width: 290px;
   }
   .box-title {
-    width: 250px;
     height: 40px;
     font-weight: 900;
     font-size: 22px;
