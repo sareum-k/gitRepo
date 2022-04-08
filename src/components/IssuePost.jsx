@@ -72,11 +72,15 @@ const Box = styled.div`
     margin-bottom: 10px;
   }
   .box-sub {
+    width: 190px;
     font-size: small;
     color: #757575;
     opacity: 0.6;
     margin-bottom: 10px;
     font-weight: 600;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
 
