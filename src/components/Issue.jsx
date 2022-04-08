@@ -34,31 +34,35 @@ const Issue = () => {
   return (
     <Container>
       {isLoaded !== null && (
-        isLoaded ? (<>{issues.slice(offset, offset + limit).map((item, idx) => (
-          <IssuePost
-            key={idx}
-            url={item.html_url}
-            description={item.repository_url.slice(29)}
-            title={item.title}
-            avatar={item.user.avatar_url}
-            updated={item.updated_at}
-          />
-        ))}
-          {issues.length === 0 ? (
-            <Empty>Issue가 없습니다.</Empty>
-          ) : (
-            <Pagination
-              total={issues.length}
-              limit={limit}
-              page={page}
-              setPage={setPage}
-            />
-          )}</>) : (<>
-            {
-              Array.from([1, 2, 3, 4, 5, 6, 7, 8, 9], (el) => (
-                <SkeletonIssue key={el} />
-              ))
-            }</>))
+        isLoaded ? (
+          <>
+            <PostBox>
+              {issues.slice(offset, offset + limit).map((item, idx) => (
+                <IssuePost
+                  key={idx}
+                  url={item.html_url}
+                  description={item.repository_url.slice(29)}
+                  title={item.title}
+                  avatar={item.user.avatar_url}
+                  updated={item.updated_at}
+                />
+              ))}
+            </PostBox>
+            {issues.length === 0 ? (
+              <Empty>Issue가 없습니다.</Empty>
+            ) : (
+              <Pagination
+                total={issues.length}
+                limit={limit}
+                page={page}
+                setPage={setPage}
+              />
+            )}</>) : (<>
+              {
+                Array.from([1, 2, 3, 4, 5, 6, 7, 8, 9], (el) => (
+                  <SkeletonIssue key={el} />
+                ))
+              }</>))
       }
     </Container>
   );
@@ -68,13 +72,15 @@ const Container = styled.div`
   width: 100%;
   height: calc(100vh - 150px);
   background: #FDF6F0;
-  padding: 20px 50px;
+  align-items: center;
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 `;
-const Box = styled.div`
+const PostBox = styled.div`
+  width: 85%;
+  height: 80%;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
