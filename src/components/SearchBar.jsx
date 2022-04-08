@@ -69,7 +69,7 @@ const Container = styled.div`
   box-sizing: border-box;
 `
 const InputBox = styled.div`
-  width: calc(100% - 800px);
+  width: 300px;
   height: 100%;
   border-radius: 10px;
   background-color: #fff;

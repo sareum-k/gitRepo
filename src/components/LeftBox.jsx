@@ -6,7 +6,6 @@ import Header from './Header';
 
 const LeftBox = () => {
   const [currentTab, setCurrntTab] = useState(0);
-  const [update, setUpdate] = useState(false);
 
   const selectMenuHandler = (index) => {
     setCurrntTab(index);
@@ -15,7 +14,7 @@ const LeftBox = () => {
   const tabArray = [
     {
       menu: 'Search',
-      content: <Search setUpdate={setUpdate} />,
+      content: <Search />,
     },
     {
       menu: 'Issue',

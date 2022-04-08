@@ -5,20 +5,24 @@ import { useRecoilState } from "recoil";
 import axios from "axios";
 import IssuePost from './IssuePost';
 import Pagination from './Pagination';
+import SkeletonIssue from "./SkeletonIssue";
 
 const Issue = () => {
   const [likedData, setLikedData] = useRecoilState(likedRepoState);
+  const [isLoaded, setIsLoaded] = useState(null);
   const [issues, setIssues] = useState([]);
   const [limit, setLimit] = useState(9);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
 
   const searchIssues = async (login, name) => {
+    setIsLoaded(false);
     const url = `https://api.github.com/repos/${login}/${name}/issues`;
     return axios
       .get(url)
       .then((res) => {
         setIssues((body) => (body ? [...body, ...res.data] : [res.data]));
+        setIsLoaded(true);
       })
       .catch((err) => alert(err));
   };
@@ -29,8 +33,8 @@ const Issue = () => {
 
   return (
     <Container>
-      <Box>
-        {issues.slice(offset, offset + limit).map((item, idx) => (
+      {isLoaded !== null && (
+        isLoaded ? (<>{issues.slice(offset, offset + limit).map((item, idx) => (
           <IssuePost
             key={idx}
             url={item.html_url}
@@ -40,17 +44,22 @@ const Issue = () => {
             updated={item.updated_at}
           />
         ))}
-      </Box>
-      {issues.length === 0 ? (
-        <Empty>Issue가 없습니다.</Empty>
-      ) : (
-        <Pagination
-          total={issues.length}
-          limit={limit}
-          page={page}
-          setPage={setPage}
-        />
-      )}
+          {issues.length === 0 ? (
+            <Empty>Issue가 없습니다.</Empty>
+          ) : (
+            <Pagination
+              total={issues.length}
+              limit={limit}
+              page={page}
+              setPage={setPage}
+            />
+          )}</>) : (<>
+            {
+              Array.from([1, 2, 3, 4, 5, 6, 7, 8, 9], (el) => (
+                <SkeletonIssue key={el} />
+              ))
+            }</>))
+      }
     </Container>
   );
 }

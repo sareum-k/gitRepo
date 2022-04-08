@@ -5,9 +5,9 @@ import SearchPost from './SearchPost';
 import { likedRepoState } from "../recoil/atoms";
 import { useRecoilState } from "recoil";
 import Pagination from './Pagination';
-import Loading from './Loading';
+import SkeletonPost from './SkeletonPost';
 
-const Search = ({ setUpdate }) => {
+const Search = () => {
   const storageData = JSON.parse(localStorage.getItem("likedData"));
   const [searchData, setSearchData] = useState([]);
   const [likedData, setLikedData] = useRecoilState(likedRepoState);
@@ -78,7 +78,13 @@ const Search = ({ setUpdate }) => {
               />
             )}
           </>
-        ) : (<Loading />))}
+        ) : (
+          <>
+            {
+              Array.from([1, 2, 3, 4, 5], (el) => (
+                <SkeletonPost key={el} />
+              ))
+            }</>))}
     </Container>
   );
 }
