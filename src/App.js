@@ -1,10 +1,14 @@
+import GlobalStyle from "./GlobalStyle";
+import { RecoilRoot } from "recoil";
+import Main from "./pages/Main";
 
-function App() {
+const App = () => {
   return (
-    <div >
-      hello!
-    </div>
+    <RecoilRoot>
+      <GlobalStyle />
+      <Main />
+    </RecoilRoot>
   );
-}
+};
 
 export default App;
