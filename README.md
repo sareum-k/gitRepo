@@ -8,15 +8,14 @@ Github API를 이용하여 등록한 Public Repository의 issue들을 모아서 
 
 ###
 
-## View
-
-![payhere_view](https://user-images.githubusercontent.com/48751435/155750461-4504769d-3697-461b-b12f-7db291477cbf.gif)
+## ✅ View
+![payhere_main](https://user-images.githubusercontent.com/87534763/162634532-20a16e64-f9c4-4829-b2b1-ac74575a525f.gif)
 
 ### <br/>
 
 ###
 
-## Implement
+## ✅ Implement
 
 ### Stack
 
@@ -33,23 +32,36 @@ Github API를 이용하여 등록한 Public Repository의 issue들을 모아서 
 - [x] 등록한 Repository 삭제 구현
 - [x] Pagenation 구현
 
-## Improvement
+### <br/>
 
-### Rendering optimization
+## ✅ Improvement
+
+### 렌더링 최적화
 
 React.memo를 사용하여 search input의 변화가 있을 때에만 렌더링이 일어나도록 최적화
-![payhere_view](https://user-images.githubusercontent.com/48751435/155750461-4504769d-3697-461b-b12f-7db291477cbf.gif)
+|   최적화 전    | 최적화 후 | 
+| :--------: | :------------: | 
+|![payhere_inputBefore](https://user-images.githubusercontent.com/87534763/162634840-2e1be9e0-43e3-4b40-b755-3230e0ad7e0e.gif)|![payhere_inputAfter](https://user-images.githubusercontent.com/87534763/162634859-ade3843c-2536-440f-b95a-367e4b4345f8.gif)|
 
-### UX/UI improvement
+### UX/UI 개선
 
 1. 사용자의 검색 방법 개선을 위하여 검색 버튼에서 디바운스를 이용한 검색으로 개선
+
+|   개선 전    | 개선 후 | 
+| :--------: | :------------: | 
+|![payhere_loading](https://user-images.githubusercontent.com/87534763/162634989-7808ea57-14fc-444a-baad-7d79fedbe38e.gif)|![payhere_search](https://user-images.githubusercontent.com/87534763/162635118-7ffbf7f3-efaf-41ee-8657-e304dad39cb7.gif)|
+
 2. 데이터를 가져오는 동안의 사용자의 화면을 개선하기 위해 로딩 적용 후 Skeleton으로 추가 개선
+
+|   개선 전    | 개선 후 | 
+| :--------: | :------------: | 
+|![payhere_loading](https://user-images.githubusercontent.com/87534763/162635135-c50a1c71-2602-4c4c-bc30-dc509e8d3b13.gif) | ![payhere_skeleton](https://user-images.githubusercontent.com/87534763/162635216-52e4e135-7522-4917-9df6-df39dcb96b4f.gif)|
 
 ### <br/>
 
 ###
 
-## Directory
+## ✅ Directory
 
 ```
 ├── public/
@@ -68,7 +80,7 @@ React.memo를 사용하여 search input의 변화가 있을 때에만 렌더링�
 
 ###
 
-## Code Convention
+## ✅ Code Convention
 
 ### Getting Started
 
