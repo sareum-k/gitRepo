@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
-import { bookmarkrepo } from "../recoil/atoms";
+import { bookmarkRepo } from "../recoil/atoms";
 import { useRecoilState } from "recoil";
 import axios from "axios";
 import IssuePost from './IssuePost';
@@ -8,7 +8,7 @@ import Pagination from './Pagination';
 import SkeletonIssue from "./SkeletonIssue";
 
 const Issue = () => {
-  const [bookedData, setBookedData] = useRecoilState(bookmarkrepo);
+  const [bookedData, setBookedData] = useRecoilState(bookmarkRepo);
   const [isLoaded, setIsLoaded] = useState(null);
   const [issues, setIssues] = useState([]);
   const [limit, setLimit] = useState(9);
@@ -79,11 +79,12 @@ const Container = styled.div`
   justify-content: center;
 `;
 const PostBox = styled.div`
-  width: 85%;
+  width: 100%;
   height: 80%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
 `
 const Empty = styled.p`
   font-size: 22px;

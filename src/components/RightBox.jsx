@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import styled from "styled-components";
 import RepositoryPost from './RepositoryPost';
-import { bookmarkrepo } from "../recoil/atoms";
+import { bookmarkRepo } from "../recoil/atoms";
 import { useRecoilState } from "recoil";
 
 const RightBox = () => {
-  const [bookedData, setBookedData] = useRecoilState(bookmarkrepo);
+  const [bookedData, setBookedData] = useRecoilState(bookmarkRepo);
 
   const remove = (name, login) => {
     const storageData = JSON.parse(localStorage.getItem("bookedData"));

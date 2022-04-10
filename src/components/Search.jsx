@@ -2,21 +2,21 @@ import React, { useState, useEffect, useMemo } from 'react';
 import styled from "styled-components";
 import SearchBar from './SearchBar';
 import SearchPost from './SearchPost';
-import { bookmarkrepo } from "../recoil/atoms";
+import { bookmarkRepo } from "../recoil/atoms";
 import { useRecoilState } from "recoil";
 import Pagination from './Pagination';
 import SkeletonPost from './SkeletonPost';
 
 const Search = () => {
-  const storageData = JSON.parse(localStorage.getItem("likedData"));
+  const storageData = JSON.parse(localStorage.getItem("bookedData"));
   const [searchData, setSearchData] = useState([]);
-  const [bookedData, setBookedData] = useRecoilState(bookmarkrepo);
+  const [bookedData, setBookedData] = useRecoilState(bookmarkRepo);
   const [isLoaded, setIsLoaded] = useState(null);
   const [limit, setLimit] = useState(5);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
 
-  const likeRepo = async (repo) => {
+  const bookRepo = async (repo) => {
     const storageData = await JSON.parse(localStorage.getItem("bookedData"));
 
     if (storageData.length === 4) {
@@ -58,7 +58,7 @@ const Search = () => {
                 updated={item.updated_at}
                 button="등록"
                 onClick={() =>
-                  likeRepo({
+                  bookRepo({
                     name: item.name,
                     login: item.owner.login,
                     description: item.description,

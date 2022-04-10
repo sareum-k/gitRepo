@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
-export const bookmarkrepo = atom({
-  key: "bookmarkrepo",
+export const bookmarkRepo = atom({
+  key: "bookmarkRepo",
   default: [],
 });
 
