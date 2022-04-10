@@ -2,7 +2,7 @@
 
 Github API를 이용하여 등록한 Public Repository의 issue들을 모아서 보는 뷰어를 구현하는 프로젝트입니다.
 
-### 📎 &nbsp;[과제 확인하러 가기](https://clever-kepler-a84405.netlify.app/)
+### 📎 &nbsp;[과제 확인하러 가기](https://payhere-github-sareum.netlify.app/)
 
 ### <br/>
 
@@ -31,6 +31,7 @@ Github API를 이용하여 등록한 Public Repository의 issue들을 모아서 
 - [x] 등록한 Repository issue를 모아 볼 수 있는 뷰어 구현
 - [x] 등록한 Repository 삭제 구현
 - [x] Pagenation 구현
+- [x] Repository list 또는 issue list 클릭 시, 상세 페이지 이동 구현
 
 ### <br/>
 
