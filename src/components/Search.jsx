@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import styled from "styled-components";
 import SearchBar from './SearchBar';
 import SearchPost from './SearchPost';
-import { likedRepoState } from "../recoil/atoms";
+import { bookmarkrepo } from "../recoil/atoms";
 import { useRecoilState } from "recoil";
 import Pagination from './Pagination';
 import SkeletonPost from './SkeletonPost';
@@ -10,15 +10,14 @@ import SkeletonPost from './SkeletonPost';
 const Search = () => {
   const storageData = JSON.parse(localStorage.getItem("likedData"));
   const [searchData, setSearchData] = useState([]);
-  const [likedData, setLikedData] = useRecoilState(likedRepoState);
+  const [bookedData, setBookedData] = useRecoilState(bookmarkrepo);
   const [isLoaded, setIsLoaded] = useState(null);
   const [limit, setLimit] = useState(5);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
 
   const likeRepo = async (repo) => {
-    const storageData = await JSON.parse(localStorage.getItem("likedData"));
-    console.log(storageData)
+    const storageData = await JSON.parse(localStorage.getItem("bookedData"));
 
     if (storageData.length === 4) {
       alert("Repository는 최대 4개까지 등록할 수 있습니다.");
@@ -30,18 +29,18 @@ const Search = () => {
       if (exist) {
         alert("이미 등록한 Repository입니다.");
       } else {
-        setLikedData([...likedData, repo]);
+        setBookedData([...bookedData, repo]);
       }
     }
   };
 
   useEffect(() => {
-    if (storageData) setLikedData(storageData);
+    if (storageData) setBookedData(storageData);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("likedData", JSON.stringify(likedData));
-  }, [likedData]);
+    localStorage.setItem("bookedData", JSON.stringify(bookedData));
+  }, [bookedData]);
 
   return (
     <Container>

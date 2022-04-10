@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
-import { likedRepoState } from "../recoil/atoms";
+import { bookmarkrepo } from "../recoil/atoms";
 import { useRecoilState } from "recoil";
 import axios from "axios";
 import IssuePost from './IssuePost';
@@ -8,7 +8,7 @@ import Pagination from './Pagination';
 import SkeletonIssue from "./SkeletonIssue";
 
 const Issue = () => {
-  const [likedData, setLikedData] = useRecoilState(likedRepoState);
+  const [bookedData, setBookedData] = useRecoilState(bookmarkrepo);
   const [isLoaded, setIsLoaded] = useState(null);
   const [issues, setIssues] = useState([]);
   const [limit, setLimit] = useState(9);
@@ -28,8 +28,8 @@ const Issue = () => {
   };
 
   useEffect(() => {
-    likedData.map((value) => searchIssues(value.login, value.name));
-  }, [likedData]);
+    bookedData.map((value) => searchIssues(value.login, value.name));
+  }, [bookedData]);
 
   return (
     <Container>
