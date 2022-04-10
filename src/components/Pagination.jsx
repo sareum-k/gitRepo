@@ -7,21 +7,19 @@ function Pagination({ total, limit, page, setPage }) {
 
   const prev = () => {
     if (page === start && page !== 1) {
-      if (page - 3 <= 1)
-        setStart(prev => prev - 1)
-      else setStart(prev => prev - 3)
+      if (page - 3 <= 1) setStart((prev) => prev - 1);
+      else setStart((prev) => prev - 3);
     }
-    setPage(page - 1)
-  }
+    setPage(page - 1);
+  };
 
   const next = () => {
     if (page === start + 4 && page !== numPages) {
-      if (page + 3 >= numPages)
-        setStart(prev => prev + 1)
-      else setStart(prev => prev + 3)
+      if (page + 3 >= numPages) setStart((prev) => prev + 1);
+      else setStart((prev) => prev + 3);
     }
-    setPage(page + 1)
-  }
+    setPage(page + 1);
+  };
 
   return (
     <>
@@ -29,7 +27,7 @@ function Pagination({ total, limit, page, setPage }) {
         <Button onClick={prev} disabled={page === 1}>
           &lt;
         </Button>
-        {Array((Math.ceil(total / limit) < 5) ? Math.ceil(total / limit) : 5)
+        {Array(Math.ceil(total / limit) < 5 ? Math.ceil(total / limit) : 5)
           .fill()
           .map((_, i) => (
             <Button
@@ -64,14 +62,14 @@ const Button = styled.button`
   border-radius: 5px;
   padding: 6px;
   margin: 0;
-  background: #FF8080;
-  border: 1px solid #FF8080;
+  background: #ff8080;
+  border: 1px solid #ff8080;
   color: white;
   font-size: 1rem;
   &:hover {
     background: #ffffff;
-    color: #FF8080;
-    border: 1px solid #FF8080;
+    color: #ff8080;
+    border: 1px solid #ff8080;
     cursor: pointer;
     font-weight: bold;
   }
@@ -80,7 +78,7 @@ const Button = styled.button`
     font-weight: bold;
     cursor: revert;
     transform: revert;
-    color: #FF8080;
+    color: #ff8080;
     border: 1px solid#FF8080;
   }
 `;

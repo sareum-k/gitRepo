@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import styled from "styled-components";
-import Issue from './Issue';
-import Search from './Search';
-import Header from './Header';
+import Issue from "./Issue";
+import Search from "./Search";
+import Header from "./Header";
 
 const LeftBox = () => {
   const [currentTab, setCurrntTab] = useState(0);
@@ -13,11 +13,11 @@ const LeftBox = () => {
 
   const tabArray = [
     {
-      menu: 'Search',
+      menu: "Search",
       content: <Search />,
     },
     {
-      menu: 'Issue',
+      menu: "Issue",
       content: <Issue />,
     },
   ];
@@ -29,23 +29,21 @@ const LeftBox = () => {
           <Tab
             key={idx}
             onClick={() => selectMenuHandler(idx)}
-            className={
-              idx === currentTab
-                ? 'submenu focused'
-                : 'submenu'
-            }
-          >{el.menu}</Tab>
+            className={idx === currentTab ? "submenu focused" : "submenu"}
+          >
+            {el.menu}
+          </Tab>
         ))}
       </TabContainer>
       <Content>{tabArray[currentTab].content}</Content>
     </Section>
   );
-}
+};
 
 const Section = styled.section`
   width: 70%;
-  height: calc(100vh - 100px);;
-`
+  height: calc(100vh - 100px); ;
+`;
 const TabContainer = styled.ul`
   display: flex;
   width: 100%;
@@ -53,14 +51,14 @@ const TabContainer = styled.ul`
   list-style: none;
   .submenu {
     width: 100%;
-    border: 1px solid #FF8080;
-    color: #FF8080;
+    border: 1px solid #ff8080;
+    color: #ff8080;
   }
   .focused {
-    background-color: #FF8080;
+    background-color: #ff8080;
     color: #fff;
   }
-`
+`;
 const Tab = styled.li`
   display: flex;
   justify-content: center;
@@ -76,6 +74,6 @@ const Content = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-`
+`;
 
 export default LeftBox;

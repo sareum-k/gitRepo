@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import SkeletonItem from "./SkeletonItem"
+import styled from "styled-components";
+import SkeletonItem from "./SkeletonItem";
 
 const SkeletonIssue = () => {
   return (
@@ -10,9 +10,9 @@ const SkeletonIssue = () => {
         <SkeletonItem className="box-sub"></SkeletonItem>
         <SkeletonItem className="box-sub"></SkeletonItem>
       </div>
-    </Box >
+    </Box>
   );
-}
+};
 
 const Box = styled.div`
   display: flex;
@@ -25,29 +25,27 @@ const Box = styled.div`
   background: #fff;
   box-sizing: border-box;
   margin-left: 20px;
-  div{
+  div {
     margin-right: 5px;
   }
   img {
     width: 60px;
     height: 60px;
     border-radius: 100px;
-    background-color: #EEEEEE;
+    background-color: #eeeeee;
   }
   .box-title {
     width: 200px;
     height: 50px;
     margin-bottom: 10px;
-    background-color: #EEEEEE;
+    background-color: #eeeeee;
   }
   .box-sub {
     width: 200px;
     height: 20px;
     margin-top: 10px;
-    background-color: #EEEEEE;
+    background-color: #eeeeee;
   }
 `;
-
-
 
 export default SkeletonIssue;

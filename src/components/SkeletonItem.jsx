@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const SkeletonItem = styled.div`
   width: 100%;
@@ -20,7 +20,7 @@ const SkeletonItem = styled.div`
   }
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;

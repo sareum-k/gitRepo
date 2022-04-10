@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from "react";
 import styled from "styled-components";
-import SearchBar from './SearchBar';
-import SearchPost from './SearchPost';
+import SearchBar from "./SearchBar";
+import SearchPost from "./SearchPost";
 import { bookmarkRepo } from "../recoil/atoms";
 import { useRecoilState } from "recoil";
-import Pagination from './Pagination';
-import SkeletonPost from './SkeletonPost';
+import Pagination from "./Pagination";
+import SkeletonPost from "./SkeletonPost";
 
 const Search = () => {
   const storageData = JSON.parse(localStorage.getItem("bookedData"));
@@ -68,7 +68,9 @@ const Search = () => {
                 }
               />
             ))}
-            {searchData.length === 0 ? (<Empty>검색결과가 없습니다.</Empty>) : (
+            {searchData.length === 0 ? (
+              <Empty>검색결과가 없습니다.</Empty>
+            ) : (
               <Pagination
                 total={searchData.length}
                 limit={limit}
@@ -79,19 +81,19 @@ const Search = () => {
           </>
         ) : (
           <>
-            {
-              Array.from([1, 2, 3, 4, 5], (el) => (
-                <SkeletonPost key={el} />
-              ))
-            }</>))}
+            {Array.from([1, 2, 3, 4, 5], (el) => (
+              <SkeletonPost key={el} />
+            ))}
+          </>
+        ))}
     </Container>
   );
-}
+};
 
 const Container = styled.div`
   width: 100%;
   height: calc(100vh - 150px);
-  background: #FDF6F0;
+  background: #fdf6f0;
   padding: 30px 50px 0px 50px;
   box-sizing: border-box;
 `;
@@ -99,11 +101,11 @@ const Container = styled.div`
 const Empty = styled.p`
   font-size: 22px;
   font-weight: 600;
-  color: #FF8080;
+  color: #ff8080;
   display: flex;
   justify-content: center;
   height: calc(100vh - 250px);
   align-items: center;
-`
+`;
 
 export default React.memo(Search);

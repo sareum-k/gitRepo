@@ -1,5 +1,5 @@
-import GlobalStyle from './GlobalStyle';
-import { RecoilRoot } from 'recoil';
+import GlobalStyle from "./GlobalStyle";
+import { RecoilRoot } from "recoil";
 import Main from "./pages/Main";
 
 const App = () => {
@@ -9,6 +9,6 @@ const App = () => {
       <Main />
     </RecoilRoot>
   );
-}
+};
 
 export default App;

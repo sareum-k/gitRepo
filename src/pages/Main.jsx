@@ -9,7 +9,7 @@ const Main = () => {
       <RightBox />
     </Container>
   );
-}
+};
 
 const Container = styled.div`
   display: flex;

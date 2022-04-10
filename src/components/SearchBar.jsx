@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useMemo } from 'react';
+import React, { useState, useCallback, useEffect, useMemo } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { debounce } from "lodash";
@@ -12,15 +12,18 @@ const SearchBar = ({ setData, setIsLoaded }) => {
     debounce((value) => {
       setSearch(value);
     }, 500),
-    []);
+    []
+  );
 
   const getSearchData = async () => {
     setIsLoaded(false);
 
     const url = `https://api.github.com/search/repositories?q=${search}&per_page=100`;
-    await axios.get(url).then((data) => {
-      setData(data.data.items);
-    })
+    await axios
+      .get(url)
+      .then((data) => {
+        setData(data.data.items);
+      })
       .catch((err) => alert(err));
 
     setIsLoaded(true);
@@ -36,14 +39,14 @@ const SearchBar = ({ setData, setIsLoaded }) => {
 
   const handleChange = (e) => {
     setInput(e.target.value);
-    delaySetValue(e.target.value)
-  }
+    delaySetValue(e.target.value);
+  };
 
   useEffect(() => {
-    if (search !== '') {
-      getSearchData()
+    if (search !== "") {
+      getSearchData();
     }
-  }, [search])
+  }, [search]);
 
   return (
     <Container>
@@ -59,7 +62,7 @@ const SearchBar = ({ setData, setIsLoaded }) => {
       </InputBox>
     </Container>
   );
-}
+};
 
 const Container = styled.div`
   display: flex;
@@ -68,7 +71,7 @@ const Container = styled.div`
   justify-content: flex-end;
   padding-right: 20px;
   box-sizing: border-box;
-`
+`;
 const InputBox = styled.div`
   width: 300px;
   height: 100%;
@@ -80,15 +83,15 @@ const InputBox = styled.div`
   margin-right: 10px;
   box-sizing: border-box;
 
-  svg{
+  svg {
     color: #757575;
   }
   display: flex;
   align-items: center;
-  svg{
+  svg {
     color: #757575;
   }
-`
+`;
 const SearchInput = styled.input`
   width: 100%;
   height: 100%;
@@ -98,8 +101,8 @@ const SearchInput = styled.input`
   margin-left: 5px;
   box-sizing: border-box;
   ::placeholder {
-    color: #C8C6C6;
+    color: #c8c6c6;
   }
-`
+`;
 
 export default React.memo(SearchBar);

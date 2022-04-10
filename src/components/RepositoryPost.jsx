@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 
 const RepositoryPost = ({
@@ -6,15 +6,12 @@ const RepositoryPost = ({
   title = "Title",
   description,
   onClick,
-  button
+  button,
 }) => {
   return (
     <Box>
       <div className="box-avatar">
-        <img
-          src={avatar}
-          alt="avatar"
-        />
+        <img src={avatar} alt="avatar" />
       </div>
       <div className="box-content">
         <div className="box-title">{title}</div>
@@ -25,9 +22,9 @@ const RepositoryPost = ({
       <div className="box-button">
         <button onClick={onClick}>{button}</button>
       </div>
-    </Box >
+    </Box>
   );
-}
+};
 
 const Box = styled.div`
   display: flex;
@@ -38,10 +35,10 @@ const Box = styled.div`
   height: 22.2%;
   padding: 15px;
   box-sizing: border-box;
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   margin-bottom: 1px;
   :hover {
-    background-color: #FFECEC;
+    background-color: #ffecec;
   }
   div {
     margin: 0 12px;
@@ -53,7 +50,7 @@ const Box = styled.div`
   }
   button {
     border: 0px;
-    background-color: #FF8080;
+    background-color: #ff8080;
     border-radius: 3px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     color: #fff;
@@ -69,7 +66,7 @@ const Box = styled.div`
     height: 40px;
     font-weight: 900;
     font-size: 22px;
-    color: #FF8080;
+    color: #ff8080;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { bookmarkRepo } from "../recoil/atoms";
 import { useRecoilState } from "recoil";
 import axios from "axios";
-import IssuePost from './IssuePost';
-import Pagination from './Pagination';
+import IssuePost from "./IssuePost";
+import Pagination from "./Pagination";
 import SkeletonIssue from "./SkeletonIssue";
 
 const Issue = () => {
@@ -33,8 +33,8 @@ const Issue = () => {
 
   return (
     <Container>
-      {isLoaded !== null && (
-        isLoaded ? (
+      {isLoaded !== null &&
+        (isLoaded ? (
           <>
             <PostBox>
               {issues.slice(offset, offset + limit).map((item, idx) => (
@@ -57,21 +57,23 @@ const Issue = () => {
                 page={page}
                 setPage={setPage}
               />
-            )}</>) : (<>
-              {
-                Array.from([1, 2, 3, 4, 5, 6, 7, 8, 9], (el) => (
-                  <SkeletonIssue key={el} />
-                ))
-              }</>))
-      }
+            )}
+          </>
+        ) : (
+          <>
+            {Array.from([1, 2, 3, 4, 5, 6, 7, 8, 9], (el) => (
+              <SkeletonIssue key={el} />
+            ))}
+          </>
+        ))}
     </Container>
   );
-}
+};
 
 const Container = styled.div`
   width: 100%;
   height: calc(100vh - 150px);
-  background: #FDF6F0;
+  background: #fdf6f0;
   align-items: center;
   box-sizing: border-box;
   display: flex;
@@ -85,13 +87,13 @@ const PostBox = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   box-sizing: border-box;
-`
+`;
 const Empty = styled.p`
   font-size: 22px;
   font-weight: 600;
-  color: #FF8080;
+  color: #ff8080;
   display: flex;
   align-items: center;
-`
+`;
 
 export default Issue;

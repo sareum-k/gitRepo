@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 
 const IssuePost = ({
@@ -12,10 +12,7 @@ const IssuePost = ({
     <Box>
       <a href={url} target="_blank" rel="noreferrer">
         <div className="box-avatar">
-          <img
-            src={avatar}
-            alt="avatar"
-          />
+          <img src={avatar} alt="avatar" />
         </div>
         <div className="box-content">
           <div className="box-title">{title}</div>
@@ -23,13 +20,13 @@ const IssuePost = ({
             <div className="box-sub">{description}</div>
           ) : null}
           {updated !== undefined ? (
-            <div className="box-sub">업데이트 {updated.split('T')[0]}</div>
+            <div className="box-sub">업데이트 {updated.split("T")[0]}</div>
           ) : null}
         </div>
       </a>
-    </Box >
+    </Box>
   );
-}
+};
 
 const Box = styled.div`
   display: flex;
@@ -48,7 +45,7 @@ const Box = styled.div`
     cursor: pointer;
     transform: translateY(-3px);
   }
-  a{
+  a {
     display: flex;
   }
   img {
@@ -63,7 +60,7 @@ const Box = styled.div`
     height: 50px;
     font-weight: 900;
     font-size: 20px;
-    color: #FF8080;
+    color: #ff8080;
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;

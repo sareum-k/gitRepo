@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 
 const SearchPost = ({
@@ -13,10 +13,7 @@ const SearchPost = ({
   return (
     <Box>
       <div className="box-avatar">
-        <img
-          src={avatar}
-          alt="avatar"
-        />
+        <img src={avatar} alt="avatar" />
       </div>
       <a href={url} target="_blank">
         <div>
@@ -25,21 +22,19 @@ const SearchPost = ({
             <div className="box-sub">{description}</div>
           ) : null}
           {updated !== undefined ? (
-            <div className="box-sub">업데이트 {updated.split('T')[0]}</div>
+            <div className="box-sub">업데이트 {updated.split("T")[0]}</div>
           ) : null}
         </div>
       </a>
 
-      {
-        button !== undefined ? (
-          <div className="box-button">
-            <button onClick={onClick}>{button}</button>
-          </div>
-        ) : null
-      }
-    </Box >
+      {button !== undefined ? (
+        <div className="box-button">
+          <button onClick={onClick}>{button}</button>
+        </div>
+      ) : null}
+    </Box>
   );
-}
+};
 
 const Box = styled.div`
   display: flex;
@@ -61,7 +56,7 @@ const Box = styled.div`
     width: 50px;
     border-radius: 100px;
   }
-  a{
+  a {
     width: 100%;
     height: 100%;
   }
@@ -70,7 +65,7 @@ const Box = styled.div`
   }
   button {
     border: 0px;
-    background-color: #FF8080;
+    background-color: #ff8080;
     border-radius: 3px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     color: #fff;
@@ -83,7 +78,7 @@ const Box = styled.div`
     height: 30px;
     font-weight: 900;
     font-size: 20px;
-    color: #FF8080;
+    color: #ff8080;
   }
   .box-sub {
     width: 600px;

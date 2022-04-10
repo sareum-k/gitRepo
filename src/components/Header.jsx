@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
 const Header = () => {
-  return (
-    <HeaderBox>Github</HeaderBox>
-  );
-}
+  return <HeaderBox>Github</HeaderBox>;
+};
 
 const HeaderBox = styled.header`
   display: flex;
@@ -15,6 +13,6 @@ const HeaderBox = styled.header`
   font-size: 36px;
   font-weight: bold;
   color: #757575;
-`
+`;
 
 export default Header;
