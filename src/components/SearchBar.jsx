@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import styled from "styled-components";
 import axios from "axios";
 import { debounce } from "lodash";
@@ -20,7 +20,8 @@ const SearchBar = ({ setData, setIsLoaded }) => {
     const url = `https://api.github.com/search/repositories?q=${search}&per_page=100`;
     await axios.get(url).then((data) => {
       setData(data.data.items);
-    });
+    })
+      .catch((err) => alert(err));
 
     setIsLoaded(true);
   };

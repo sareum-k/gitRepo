@@ -55,6 +55,8 @@ const Nav = styled.nav`
   gap: 5px;
   margin-top: 40px;
   box-sizing: border-box;
+  width: 100%;
+  height: 30px;
 `;
 
 const Button = styled.button`

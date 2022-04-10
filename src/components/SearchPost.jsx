@@ -86,12 +86,16 @@ const Box = styled.div`
     color: #FF8080;
   }
   .box-sub {
+    width: 600px;
     height: 15px;
     margin-bottom: 5px;
     font-size: small;
     color: #757575;
     opacity: 0.6;
     box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .box-button {
     margin-left: auto;
@@ -99,4 +103,4 @@ const Box = styled.div`
   }
 `;
 
-export default React.memo(SearchPost);
+export default SearchPost;

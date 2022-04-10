@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
-export const likedRepoState = atom({
-  key: "likedRepoState",
+export const bookmarkRepo = atom({
+  key: "bookmarkRepo",
   default: [],
 });
 
