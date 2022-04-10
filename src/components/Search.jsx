@@ -106,4 +106,4 @@ const Empty = styled.p`
   align-items: center;
 `
 
-export default Search;
+export default React.memo(Search);

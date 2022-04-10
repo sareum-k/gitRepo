@@ -15,9 +15,9 @@ const Issue = () => {
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
 
-  const searchIssues = async (login, name) => {
+  const searchIssues = async (githubId, repoName) => {
     setIsLoaded(false);
-    const url = `https://api.github.com/repos/${login}/${name}/issues`;
+    const url = `https://api.github.com/repos/${githubId}/${repoName}/issues`;
     return axios
       .get(url)
       .then((res) => {

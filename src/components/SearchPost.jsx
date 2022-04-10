@@ -103,4 +103,4 @@ const Box = styled.div`
   }
 `;
 
-export default React.memo(SearchPost);
+export default SearchPost;
