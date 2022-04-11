@@ -28,9 +28,7 @@ const SearchPost = ({
       </a>
 
       {button !== undefined ? (
-        <div className="box-button">
-          <button onClick={onClick}>{button}</button>
-        </div>
+        <button onClick={onClick}>{button}</button>
       ) : null}
     </Box>
   );
@@ -82,7 +80,7 @@ const Box = styled.div`
   }
   .box-sub {
     width: 600px;
-    height: 15px;
+    height: 17px;
     margin-bottom: 5px;
     font-size: small;
     color: #757575;
@@ -91,10 +89,6 @@ const Box = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-  .box-button {
-    margin-left: auto;
-    cursor: pointer;
   }
 `;
 
