@@ -7,19 +7,14 @@ function Pagination({ total, limit, page, setPage }) {
 
   const prev = () => {
     if (page === start && page !== 1) {
-      if (page - 3 <= 1) setStart((prev) => prev - 1);
-      else setStart((prev) => prev - 5); // 5개의 리스트가 끝나면 숫자를 어디서부터 다시 보이게 할지
+      setStart((prev) => prev - 5); // 5개의 리스트가 끝나면 숫자를 어디서부터 다시 보이게 할지
     }
     setPage(page - 1);
   };
 
   const next = () => {
-    console.log(`page ${page}`)
-    console.log(`page ${start}`)
-    console.log(`page ${numPages}`)
     if (page === start + 4 && page !== numPages) {
-      if (page + 3 >= numPages) setStart((prev) => prev + 1);
-      else setStart((prev) => prev + 5); // 5개의 리스트가 끝나면 숫자를 어디서부터 다시 보이게 할지
+      setStart((prev) => prev + 5); // 5개의 리스트가 끝나면 숫자를 어디서부터 다시 보이게 할지
     }
     setPage(page + 1);
   };
@@ -62,13 +57,16 @@ const Nav = styled.nav`
 
 const Button = styled.button`
   border: none;
+  width: 25px;
+  height: 30px;
   border-radius: 5px;
-  padding: 6px;
+  padding: 2px;
   margin: 0;
   background: #ff8080;
   border: 1px solid #ff8080;
   color: white;
   font-size: 1rem;
+  box-sizing: border-box;
   &:hover {
     background: #ffffff;
     color: #ff8080;
