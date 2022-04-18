@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import SearchBar from "./SearchBar";
 import SearchPost from "./SearchPost";

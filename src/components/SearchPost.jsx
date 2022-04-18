@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 
-const SearchPost = ({
+const SearchPost = memo(({
   url,
   avatar = "https://avatars.githubusercontent.com/u/15073430?v=4",
   title = "Title",
@@ -32,7 +32,7 @@ const SearchPost = ({
       ) : null}
     </Box>
   );
-};
+});
 
 const Box = styled.div`
   display: flex;
@@ -92,4 +92,4 @@ const Box = styled.div`
   }
 `;
 
-export default SearchPost;
+export default React.memo(SearchPost);

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const RepositoryPost = ({
-  avatar = "https://avatars.githubusercontent.com/u/15073430?v=4",
+  avatar,
   title = "Title",
   description,
   onClick,
