@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { bookmarkRepo } from "../recoil/atoms";
-import { useRecoilState } from "recoil";
 import axios from "axios";
 import IssuePost from "./IssuePost";
 import Pagination from "./Pagination";
 import SkeletonIssue from "./SkeletonIssue";
 
 const Issue = () => {
-  const [bookedData, setBookedData] = useRecoilState(bookmarkRepo);
+  const [bookedData, setBookedData] = useState([])
   const [isLoaded, setIsLoaded] = useState(null);
   const [issues, setIssues] = useState([]);
   const [limit, setLimit] = useState(9);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
+  console.log(issues)
 
   const searchIssues = async (githubId, repoName) => {
     setIsLoaded(false);
     const url = `https://api.github.com/repos/${githubId}/${repoName}/issues`;
-    return axios
+    await axios
       .get(url)
       .then((res) => {
         setIssues((body) => (body ? [...body, ...res.data] : [res.data]));
@@ -31,15 +30,19 @@ const Issue = () => {
     bookedData.map((value) => searchIssues(value.login, value.name));
   }, [bookedData]);
 
+  useEffect(() => {
+    setBookedData(JSON.parse(localStorage.getItem("bookedData")))
+  }, []);
+
   return (
     <Container>
       {isLoaded !== null &&
         (isLoaded ? (
           <>
             <PostBox>
-              {issues.slice(offset, offset + limit).map((item, idx) => (
+              {issues.slice(offset, offset + limit).map((item) => (
                 <IssuePost
-                  key={idx}
+                  key={item.id}
                   url={item.html_url}
                   description={item.repository_url.slice(29)}
                   title={item.title}

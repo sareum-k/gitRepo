@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 function Pagination({ total, limit, page, setPage }) {
   const numPages = Math.ceil(total / limit); // (전체 개수 / 한 페이지에 나타낼 데이터 수), 총 페이지 수
-  const [start, setStart] = useState(1);
+  const [start, setStart] = useState(1); // 페이지 리스트를 5개씩 바꾸기 위한 state
 
   const prev = () => {
     if (page === start && page !== 1) {

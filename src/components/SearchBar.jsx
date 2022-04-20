@@ -1,19 +1,18 @@
-import React, { useState, useCallback, useEffect, useMemo } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { debounce } from "lodash";
 import { FaSearch } from "react-icons/fa";
 
 const SearchBar = ({ setData, setIsLoaded }) => {
-  const [input, setInput] = useState("");
-  const [search, setSearch] = useState("");
+  const [input, setInput] = useState(""); // 화면 입력값
+  const [search, setSearch] = useState(""); // 검색값
 
   const delaySetValue = useCallback(
     debounce((value) => {
       setSearch(value);
     }, 500),
-    []
-  );
+    []);
 
   const getSearchData = async () => {
     setIsLoaded(false);
@@ -24,13 +23,13 @@ const SearchBar = ({ setData, setIsLoaded }) => {
       .then((data) => {
         setData(data.data.items);
       })
-      .catch((err) => alert(err));
+      .catch((err) => alert('에러가 발생하였습니다. 관리자에게 문의 부탁드립니다.'));
 
     setIsLoaded(true);
   };
 
   const searchData = () => {
-    if (input === "") {
+    if (search === "") {
       alert("Repository 제목을 입력해주세요.");
       return;
     }

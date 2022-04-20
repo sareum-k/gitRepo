@@ -12,9 +12,9 @@ const Search = () => {
   const [searchData, setSearchData] = useState([]);
   const [bookedData, setBookedData] = useRecoilState(bookmarkRepo);
   const [isLoaded, setIsLoaded] = useState(null);
-  const [limit, setLimit] = useState(5);
-  const [page, setPage] = useState(1);
-  const offset = (page - 1) * limit;
+  const [limit, setLimit] = useState(5); // 한 페이지에 보여줄 데이터 수
+  const [page, setPage] = useState(1); // 현재 페이지
+  const offset = (page - 1) * limit; // 데이터가 시작하는 위치
 
   const bookRepo = async (repo) => {
     const storageData = await JSON.parse(localStorage.getItem("bookedData"));
@@ -34,6 +34,8 @@ const Search = () => {
     }
   };
 
+  console.log(searchData)
+
   useEffect(() => {
     if (storageData) setBookedData(storageData);
   }, []);
@@ -48,9 +50,9 @@ const Search = () => {
       {isLoaded !== null &&
         (isLoaded ? (
           <>
-            {searchData.slice(offset, offset + limit).map((item, idx) => (
+            {searchData.slice(offset, offset + limit).map((item) => (
               <SearchPost
-                key={idx}
+                key={item.id}
                 url={item.html_url}
                 title={item.name}
                 description={item.description}
