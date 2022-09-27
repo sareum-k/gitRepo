@@ -1,5 +1,3 @@
-# payhere
-
 Github API를 이용하여 등록한 Public Repository의 issue들을 모아서 보는 뷰어를 구현하는 프로젝트입니다.
 
 ### 📎 &nbsp;[Go](https://payhere-github-sareum.netlify.app/)
